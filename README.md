@@ -16,3 +16,11 @@ var menu = $(menu_div_selector).setupMenu(menuObj);
 * _id
 * _disabled
 * _no_hover
+
+#API
+
+* setupMenu
+* addMenu
+* removeMenu
+* disable
+* enable
