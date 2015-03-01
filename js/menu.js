@@ -92,13 +92,13 @@ $(function (){
 		var closest = menu.closest(".rightMenu");
 		if (closest.length > 0){
 			if (menu.parent().hasClass("sub_menu_holder")){
-				//menu.css("left", menu.parent().position().left - menu.width() + menu.parent().width());
-				//menu.css("right", menu.parent().position().right);
-				//menu.css("right",  menu.parent().position().left - menu.parent().width());
 				menu.css("left", menu.parent().position().left - menu.width() + menu.parent().width() + 14);
 			} else {
 				menu.offset({left: menu.parent().offset().left - menu.width()});
 			}
+		}
+		if (menu.parent().hasClass("top_menu")){
+			menu.css("top", menu.parent().position().top + menu.parent().height()+10);
 		}
 		var arrows = menu.find(".menu_arrow:visible");
 		for (var i = 0; i < arrows.length; i++){
