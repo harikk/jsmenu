@@ -24,7 +24,7 @@ Where,
 		});
 </code></pre>
 
-	##for more detailed example look example.html
+for more detailed example look example.html
 
 #Options
 
