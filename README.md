@@ -37,6 +37,7 @@ for more detailed example look example.html
 * _dont_hide_on_click: Menu will not be hidden even after clicking an item with this option true
 * _no_extra_width : No extra width will be added to the end of menu item.
 * _escaped: This attribute allows usage of other options as text of menu.
+* _separator: Add a separator between menus
 
 #API
 

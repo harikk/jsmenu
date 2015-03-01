@@ -108,59 +108,66 @@ $(function (){
 		}
 	}
 	var _process_menu_item = function (root, sub_menu){
-		if (sub_menu._escaped == "false" || sub_menu._escaped == false || sub_menu._escaped == undefined){
-			if (typeof sub_menu._callback == "function"){
-				var callback = sub_menu._callback;
-				var clickFn = function (e){
-					if ($(this).closest(".disabled_menu").length == 0){
-						callback.call(this, e);
-					}
-				};
-				if (root.find(".top_menu").length > 0) {
-					root.find("a").bind("click", clickFn);
-				} else {
-					root.bind("click", clickFn);
-				}
-				delete sub_menu._callback;
-			}
-			if (sub_menu._dont_hide_on_click == true || sub_menu._dont_hide_on_click == "true"){
-				root.addClass("dont_hide");
-				delete sub_menu._dont_hide_on_click;
-			}
-			if (sub_menu._no_extra_width == true || sub_menu._no_extra_width == "true"){
-				root.addClass("no_extra_width");
-				delete sub_menu._no_extra_width;
-			}
-			
-			if (sub_menu._no_text == true || sub_menu._no_text == "true"){
-				root.find("a").html("&nbsp;");
-			}
-			delete sub_menu._no_text;
-			
-			if (typeof sub_menu._icon == "string"){
-				root.append('<img src="' + sub_menu._icon + '">');
-				delete sub_menu._icon;
-			}
-			if (typeof sub_menu._id == "string"){
-				root.attr("id", sub_menu._id);
-				delete sub_menu._id;
-			}
-			if (sub_menu._disabled == true || sub_menu._disabled == "true"){
-				root.addClass("disabled_menu");
-				delete sub_menu._disabled;
-			}
-			if (sub_menu._no_hover == true || sub_menu._no_hover == "true"){
-				root.addClass("no_hover");
-				delete sub_menu._no_hover;
-			}
-		} else {
-			if (sub_menu._escaped == "true" || sub_menu._escaped == true){
-				delete sub_menu._escaped;
-			}
-		}
 		if (!$.isEmptyObject(sub_menu)){
-			if (typeof sub_menu == "object"){
-				return _fillsub_menus(root, sub_menu);
+			if (sub_menu._escaped == "false" || sub_menu._escaped == false || sub_menu._escaped == undefined){
+				if (typeof sub_menu._callback == "function"){
+					var callback = sub_menu._callback;
+					var clickFn = function (e){
+						if ($(this).closest(".disabled_menu").length == 0){
+							callback.call(this, e);
+						}
+					};
+					if (root.find(".top_menu").length > 0) {
+						root.find("a").bind("click", clickFn);
+					} else {
+						root.bind("click", clickFn);
+					}
+					delete sub_menu._callback;
+				}
+				if (sub_menu._dont_hide_on_click == true || sub_menu._dont_hide_on_click == "true"){
+					root.addClass("dont_hide");
+					delete sub_menu._dont_hide_on_click;
+				}
+				if (sub_menu._no_extra_width == true || sub_menu._no_extra_width == "true"){
+					root.addClass("no_extra_width");
+					delete sub_menu._no_extra_width;
+				}
+				
+				if (sub_menu._no_text == true || sub_menu._no_text == "true"){
+					root.find("a").html("&nbsp;");
+				}
+				delete sub_menu._no_text;
+				
+				if (sub_menu._separator == true || sub_menu._separator == "true"){
+					root.replaceWith("<hr />");
+				}
+				delete sub_menu._separator;
+				
+				if (typeof sub_menu._icon == "string"){
+					root.append('<img src="' + sub_menu._icon + '">');
+					delete sub_menu._icon;
+				}
+				if (typeof sub_menu._id == "string"){
+					root.attr("id", sub_menu._id);
+					delete sub_menu._id;
+				}
+				if (sub_menu._disabled == true || sub_menu._disabled == "true"){
+					root.addClass("disabled_menu");
+					delete sub_menu._disabled;
+				}
+				if (sub_menu._no_hover == true || sub_menu._no_hover == "true"){
+					root.addClass("no_hover");
+					delete sub_menu._no_hover;
+				}
+			} else {
+				if (sub_menu._escaped == "true" || sub_menu._escaped == true){
+					delete sub_menu._escaped;
+				}
+			}
+			if (!$.isEmptyObject(sub_menu)){
+				if (typeof sub_menu == "object"){
+					return _fillsub_menus(root, sub_menu);
+				}
 			}
 		}
 	};
@@ -175,13 +182,9 @@ $(function (){
 		}
 		for (var menu in sub_menu_items) {
 			if (sub_menu_items.hasOwnProperty(menu)) {
-				if (menu == "_"){
-					root.append("<hr />");
-				} else {
-					var menuItem = $('<li class="menu_item"><a>'+menu+'</a></li>');
-					root.append(menuItem);
-					_process_menu_item(menuItem, sub_menu_items[menu]);
-				}
+				var menuItem = $('<li class="menu_item"><a>'+menu+'</a></li>');
+				root.append(menuItem);
+				_process_menu_item(menuItem, sub_menu_items[menu]);
 			}
 		}
 		return root;
