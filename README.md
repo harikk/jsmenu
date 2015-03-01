@@ -15,6 +15,7 @@ and call the functions like,
 Where,
 	menu_div_selector is any valid CSS selector which will be replaced with the menu.
 	menuObj is a JSON object representing the menu. 
+	<code><pre>
 		var menu = $("#top_menu_bar_1").setupMenu({
 			'<img src="/img/cat.png">': {
 				"About Me": {}
@@ -154,7 +155,7 @@ Where,
 		$("#_callbackMenuItem").click(function (e){
 			$("#cutMenuItem").enable();
 		});
-
+</pre></code>
 
 #Options
 
