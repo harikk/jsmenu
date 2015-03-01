@@ -5,4 +5,14 @@ Syntax is very simple.
 
 var menu = $(menu_div_selector).setupMenu(menuObj);
 
-#Example
+#Options
+
+* _escaped
+* _callback
+* _dont_hide_on_click
+* _no_extra_width
+* _no_text
+* _icon
+* _id
+* _disabled
+* _no_hover
