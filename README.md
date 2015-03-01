@@ -7,15 +7,15 @@ var menu = $(menu_div_selector).setupMenu(menuObj);
 
 #Options
 
-* _escaped
-* _callback
-* _dont_hide_on_click
-* _no_extra_width
-* _no_text
-* _icon
 * _id
+* _callback
+* _icon
 * _disabled
 * _no_hover
+* _no_text
+* _dont_hide_on_click
+* _no_extra_width
+* _escaped
 
 #API
 
